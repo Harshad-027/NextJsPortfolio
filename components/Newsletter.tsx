@@ -10,7 +10,7 @@ export default function Newsletter() {
                 <p className="text-gray-600 dark:text-gray-300">
                   Get the latest updates on my projects, blog posts, and tech insights delivered straight to your inbox.
                 </p>
-                <p>"Newsletter Section will be live soon...."</p>
+                <p>&quot;Newsletter Section will be live soon....&quot;</p>
               </div>
               <form className="flex flex-col sm:flex-row gap-4">
                 <input
