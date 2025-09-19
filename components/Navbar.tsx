@@ -20,7 +20,6 @@ export default function Navbar() {
     { href: '/blogs', label: 'Blogs' },
     { href: '/contact', label: 'Contact' },
   ];
-
   return (
     <nav className="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-sm z-50">
       <div className="container max-w-7xl mx-auto px-4">

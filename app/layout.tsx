@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
+import { BackgroundBeams } from "@/components/ui/Background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +17,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Devfolio | Portfolio Website using Next.js, Tailwind CSS, and Framer Motion",
-  description: "Devfolio is a portfolio website for developers to showcase their projects and skills.",
+  title:
+    "Harshad's Devfolio",
+  description:
+    "Devfolio is a portfolio website which showcase my projects and skills.",
 };
 
 export default function RootLayout({
@@ -27,13 +30,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className={`bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}
+      >
         <ThemeProvider>
-          <Navbar />
-          <main className="min-h-screen pt-24">
-            {children}
-          </main>
-          <Footer />
+          <BackgroundBeams />
+            <Navbar />
+            <main className="min-h-screen pt-24">{children}</main>
+            <Footer />
         </ThemeProvider>
       </body>
     </html>

@@ -78,6 +78,7 @@ export default function About() {
               <li>Express</li>
               <li>PostgreSQL</li>
               <li>MongoDB</li>
+              <li>Next.js</li>
             </ul>
           </motion.div>
           
@@ -121,12 +122,12 @@ export default function About() {
             variants={fadeInUp}
             {...cardHoverSmall}
           >
-            <h3 className="text-xl font-semibold mb-2">Senior Full Stack Developer</h3>
-            <p className="text-primary mb-2">Company Name • 2020 - Present</p>
+            <h3 className="text-xl font-semibold mb-2">Backend Developer Intern</h3>
+            <p className="text-primary mb-2">ByteUprise • Feb-25 - July-25</p>
             <ul className="text-secondary list-disc list-inside space-y-2">
-              <li>Led development of multiple web applications using React and Node.js</li>
-              <li>Implemented CI/CD pipelines reducing deployment time by 50%</li>
-              <li>Mentored junior developers and conducted code reviews</li>
+              <li>Was in the team of multiple web applications using React and Node.js</li>
+              <li>Done various backend configurations in the team of experienced developers</li>
+              <li>Mentored by experienced developers and code reviews</li>
             </ul>
           </motion.div>
           
@@ -135,12 +136,12 @@ export default function About() {
             variants={fadeInUp}
             {...cardHoverSmall}
           >
-            <h3 className="text-xl font-semibold mb-2">Full Stack Developer</h3>
-            <p className="text-primary mb-2">Previous Company • 2018 - 2020</p>
+            <h3 className="text-xl font-semibold mb-2">Fullstack Dev intern</h3>
+            <p className="text-primary mb-2">Datamatics Software Ltd• Nov/2024 - Feb/2025</p>
             <ul className="text-secondary list-disc list-inside space-y-2">
-              <li>Developed and maintained RESTful APIs</li>
-              <li>Built responsive user interfaces with modern JavaScript frameworks</li>
-              <li>Optimized database queries improving performance by 40%</li>
+              <li>Helped Developement Team with various kind of day to day Developement task which were assigned to me</li>
+              <li>Optimized database queries improving performance</li>
+              <li>Learned a lot about industry level Developement and professional code management </li>
             </ul>
           </motion.div>
         </motion.div>

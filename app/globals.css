@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html, body {
+  @apply h-full m-0 p-0;
+}
+
 @theme {
   --color-primary: #007AFF;
   --color-secondary: #6B7280;
@@ -13,7 +17,6 @@
   --animation-fade-in: fadeIn 0.5s ease-in-out;
   --animation-slide-up: slideUp 0.5s ease-in-out;
 }
-
 
 @custom-variant dark (&:where(.dark, .dark *));
 
