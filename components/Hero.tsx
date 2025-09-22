@@ -7,11 +7,12 @@ import { motion } from "framer-motion";
 import { fadeInUp, fadeIn, scaleIn } from "@/utils/animations";
 import { TextGenerateEffect } from "./ui/TextGenEffect";
 import { HoverBorderGradient } from "./ui/hoverBoarderGradient";
+import SplineComp from "./ui/Spline";
 
 export default function Hero() {
   return (
     <section className="py-28">
-      <div className="container max-w-7xl mx-auto px-4">
+      <div className="container flex justify-between max-w-7xl mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             className="flex justify-center items-center mb-4"
@@ -136,7 +137,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+        </div>
     </section>
   );
 }

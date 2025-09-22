@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
-import { BackgroundBeams } from "@/components/ui/Background";
+import Background from "@/components/ui/Background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,9 +34,9 @@ export default function RootLayout({
         className={`bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}
       >
         <ThemeProvider>
-          <BackgroundBeams />
+          <Background className=''/>
             <Navbar />
-            <main className="min-h-screen pt-24">{children}</main>
+            <main className="min-h-screen pt-24 z-50">{children}</main>
             <Footer />
         </ThemeProvider>
       </body>
