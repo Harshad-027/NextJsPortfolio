@@ -7,12 +7,11 @@ import { motion } from "framer-motion";
 import { fadeInUp, fadeIn, scaleIn } from "@/utils/animations";
 import { TextGenerateEffect } from "./ui/TextGenEffect";
 import { HoverBorderGradient } from "./ui/hoverBoarderGradient";
-import SplineComp from "./ui/Spline";
 
 export default function Hero() {
   return (
-    <section className="py-28">
-      <div className="container flex justify-between max-w-7xl mx-auto px-4">
+    <section className="relative py-28 z-10">
+      <div className="container max-w-7xl mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             className="flex justify-center items-center mb-4"
@@ -22,8 +21,8 @@ export default function Hero() {
             <Image
               src="/Profile.png"
               alt="Profile"
-              width={100}
-              height={100}
+              width={150}
+              height={150}
               className="rounded-full mb-4 w-32 h-32 object-cover ring-2 ring-primary"
             />
           </motion.div>
@@ -32,13 +31,13 @@ export default function Hero() {
             {...fadeInUp}
             transition={{ delay: 0.3 }}
           >
-            <TextGenerateEffect words=" Hi, I'm " />
+            <span className="inline-block">Hi, I&apos;m </span>
             <motion.span
-              className="text-primary"
+              className="text-primary inline-block"
               {...fadeIn}
               transition={{ delay: 0.8 }}
             >
-              Harshad Nikam
+              <TextGenerateEffect words=" Harshad Nikam "/> 
             </motion.span>
           </motion.h1>
           <motion.p
@@ -46,7 +45,7 @@ export default function Hero() {
             {...fadeInUp}
             transition={{ delay: 0.4 }}
           >
-            <TextGenerateEffect words=" Full Stack Developer | UI/UX Enthusiast | Open Source Contributor" />
+            <TextGenerateEffect words="Full Stack Developer | UI/UX Enthusiast | Open Source Contributor"/>
           </motion.p>
           <motion.div
             className="flex justify-center space-x-4 mb-8"
@@ -64,7 +63,7 @@ export default function Hero() {
               <FaGithub />
             </motion.a>
             <motion.a
-              href="www.linkedin.com/in/harshadnikam27"
+              href="https://linkedin.com/in/harshadnikam27"
               target="_blank"
               rel="noopener noreferrer"
               className="text-2xl text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
@@ -89,16 +88,16 @@ export default function Hero() {
             {...fadeInUp}
             transition={{ delay: 0.6 }}
           >
-              {/* View Projects */}
+            {/* View Projects */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/projects"
-                className="m-4 flex justify-center text-center"
+                className="flex justify-center text-center"
               >
                 <HoverBorderGradient
                   containerClassName="rounded-full"
                   as="button"
-                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 px-6 py-2"
                 >
                   View Projects
                 </HoverBorderGradient>
@@ -108,12 +107,12 @@ export default function Hero() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/contact"
-                className="m-4 flex justify-center text-center"
+                className="flex justify-center text-center"
               >
                 <HoverBorderGradient
                   containerClassName="rounded-full"
                   as="button"
-                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 px-6 py-2"
                 >
                   Contact Me
                 </HoverBorderGradient>
@@ -122,14 +121,14 @@ export default function Hero() {
             {/* Download Resume */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <a
-                href="resume.pdf"
+                href="/resume.pdf"
                 download
-                className="m-4 flex justify-center text-center"
+                className="flex justify-center text-center"
               >
                 <HoverBorderGradient
                   containerClassName="rounded-full"
                   as="button"
-                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 px-6 py-2"
                 >
                   Download Resume
                 </HoverBorderGradient>
@@ -137,7 +136,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
         </div>
-        </div>
+      </div>
     </section>
   );
 }

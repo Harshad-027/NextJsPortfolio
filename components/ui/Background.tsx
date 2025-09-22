@@ -3,11 +3,9 @@ import Blob from './Blob'
 
 const Background = () => {
   return (
-    <>
-    <div className='relative max-h-full max-w-full z-0'>
+    <div className='fixed inset-0 -z-10 pointer-events-none'>
       <Blob />
     </div>
-    </>
   )
 }
 

@@ -31,13 +31,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}
+        className={`relative bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}
       >
         <ThemeProvider>
-          <Background className=''/>
+          <Background />
+          <div className="relative z-10">
             <Navbar />
-            <main className="min-h-screen pt-24 z-50">{children}</main>
+            <main className="min-h-screen pt-24">{children}</main>
             <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
