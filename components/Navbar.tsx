@@ -1,9 +1,15 @@
-'use client'
-import Link from 'next/link'
-import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { useTheme } from '../app/context/ThemeContext'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+"use client";
+import Link from "next/link";
+import {
+  SunIcon,
+  MoonIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import { useTheme } from "../app/context/ThemeContext";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -14,12 +20,14 @@ export default function Navbar() {
   };
 
   const menuItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/blogs', label: 'Blogs' },
-    { href: '/contact', label: 'Contact' },
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/projects", label: "Projects" },
+    { href: "/blogs", label: "Blogs" },
+    { href: "/contact", label: "Contact" },
   ];
+  const pathName = usePathname();
+
   return (
     <nav className="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-sm z-50">
       <div className="container max-w-7xl mx-auto px-4">
@@ -27,25 +35,36 @@ export default function Navbar() {
           <Link href="/demo" className="text-xl font-bold text-primary">
             Devfolio&trade;
           </Link>
-          
+
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <Link 
-                key={item.href}
-                href={item.href} 
-                className="hover:text-primary transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {menuItems.map((item) => {
+              const isActive =
+                pathName === item.href ||
+                (pathName.startsWith(item.href) && item.href !== "/");
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative hover:text-primary transition-colors font-bold mr-4 ${
+                    isActive ? "text-primary" : "text-white"
+                  } 
+                  after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-1/3 after:bg-orange-400 
+                  after:transition-all after:duration-300 
+                  ${isActive ? "after:opacity-100" : "after:opacity-0 hover:after:opacity-100"}`}
+                  
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <motion.button
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              {theme === 'dark' ? (
+              {theme === "dark" ? (
                 <SunIcon className="h-5 w-5" />
               ) : (
                 <MoonIcon className="h-5 w-5" />
@@ -73,7 +92,7 @@ export default function Navbar() {
           {isMobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
               className="md:hidden"
@@ -107,7 +126,7 @@ export default function Navbar() {
                     }}
                     className="flex items-center py-2 hover:text-primary transition-colors"
                   >
-                    {theme === 'dark' ? (
+                    {theme === "dark" ? (
                       <>
                         <SunIcon className="h-5 w-5 mr-2" />
                         Light Mode
@@ -126,5 +145,5 @@ export default function Navbar() {
         </AnimatePresence>
       </div>
     </nav>
-  )
-} 
+  );
+}
