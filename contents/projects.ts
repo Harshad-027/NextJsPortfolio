@@ -11,12 +11,12 @@ export const projects: Project[] = [
         image: '/projects/portfolio.png',
       },
     {
-        title: 'Auth Backend',
+        title: 'JWT shield',
         description: 'A robust Auth Backend with industry level user management.',
         technologies: ['Node.js','Javascript', 'JWT', 'multer'] ,
-        githubLink: '',
-        demoLink: 'https://next-js-portfolio-seven-kappa.vercel.app/',
-        image: '/projects/portfolio-website.jpg',
+        githubLink: 'https://github.com/Harshad-027/JWT-Shield',
+        demoLink: 'https://github.com/Harshad-027/JWT-Shield',
+        image: '/projects/JWTShield.png',
       },
     {
         title: 'Next TODO',

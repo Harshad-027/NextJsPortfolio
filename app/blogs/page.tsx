@@ -4,7 +4,7 @@ import { blogs } from '@/contents/blogs'
 import Link from 'next/link'
 import { FaCalendarAlt, FaClock } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-// import { fadeInUp, staggerContainer, cardHoverSmall } from '@/utils/animations'
+import { fadeInUp, staggerContainer, cardHoverSmall } from '@/utils/animations'
 
 export default function Blogs() {
   return (
@@ -20,7 +20,7 @@ export default function Blogs() {
       
       <motion.div 
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        // variants={staggerContainer}
+        variants={staggerContainer}
         initial="initial"
         animate="animate"
       >
@@ -28,8 +28,8 @@ export default function Blogs() {
           <motion.article
             key={index}
             className="bg-white dark:bg-dark/50 rounded-lg shadow-md overflow-hidden"
-            // variants={fadeInUp}
-            // {...cardHoverSmall}
+            variants={fadeInUp}
+            {...cardHoverSmall}
           >
             <div className="p-6">
               <motion.h2 

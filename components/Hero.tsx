@@ -33,11 +33,10 @@ export default function Hero() {
           >
             <span className="inline-block">Hi, I&apos;m </span>
             <motion.span
-              className="text-primary inline-block"
               {...fadeIn}
               transition={{ delay: 0.8 }}
             >
-              <TextGenerateEffect words=" Harshad Nikam "/> 
+              <TextGenerateEffect  className="text-primary inline-block" words=" Harshad Nikam "/> 
             </motion.span>
           </motion.h1>
           <motion.p
