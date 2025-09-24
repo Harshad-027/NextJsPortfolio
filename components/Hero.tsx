@@ -25,18 +25,18 @@ export default function Hero() {
               height={150}
               className="rounded-full mb-4 w-32 h-32 object-cover ring-2 ring-primary"
             />
-          </motion.div>
+          </motion.div> 
           <motion.h1
             className="text-4xl md:text-6xl font-bold mb-6"
             {...fadeInUp}
             transition={{ delay: 0.3 }}
           >
-            <span className="inline-block">Hi, I&apos;m </span>
+            <span className="inline-block text-primary">Hi, I&apos;m </span>
             <motion.span
               {...fadeIn}
               transition={{ delay: 0.8 }}
             >
-              <TextGenerateEffect  className="text-primary inline-block" words=" Harshad Nikam "/> 
+              <TextGenerateEffect words=" Harshad Nikam "/>
             </motion.span>
           </motion.h1>
           <motion.p
