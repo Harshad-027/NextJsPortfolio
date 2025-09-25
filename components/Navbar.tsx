@@ -32,7 +32,7 @@ export default function Navbar() {
     <nav className="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-sm z-50">
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/demo" className="text-xl font-bold text-primary">
+          <Link href="/" className="text-xl font-bold text-primary">
             Devfolio&trade;
           </Link>
 
