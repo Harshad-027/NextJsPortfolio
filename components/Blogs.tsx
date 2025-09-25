@@ -30,7 +30,7 @@ export default function Blogs() {
               variants={fadeInUp}
               whileHover={{ scale: 1.02 }}
             >
-              <Link href={`/blogs/${blog.slug}`}>
+              <Link href={`/blogs/${blog.id}`}>
                 <motion.h3 
                   className="text-xl font-semibold mb-2 hover:text-primary transition-colors"
                   whileHover={{ x: 5 }}
