@@ -35,6 +35,10 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Background />
+          <div
+      className="fixed inset-0 backdrop-blur-md pointer-events-none"
+      aria-hidden="true"
+    />
           <div className="relative z-10">
             <Navbar />
             <main className="min-h-screen pt-24">{children}</main>

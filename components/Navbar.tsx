@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import {
   SunIcon,
@@ -7,33 +8,44 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { useTheme } from "../app/context/ThemeContext";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useCallback, useMemo, memo } from "react";
 import { usePathname } from "next/navigation";
 
-export default function Navbar() {
+const Navbar = memo(() => {
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathName = usePathname();
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const menuItems = [
+  // Memoize menu items
+  const menuItems = useMemo(() => [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
     { href: "/blogs", label: "Blogs" },
     { href: "/contact", label: "Contact" },
-  ];
-  const pathName = usePathname();
+  ], []);
+
+  // Memoize handlers
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  const handleThemeToggle = useCallback(() => {
+    toggleTheme();
+    setIsMobileMenuOpen(false);
+  }, [toggleTheme]);
 
   return (
-    <nav className="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-sm z-50">
-      <div className="container max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
           <Link href="/" className="text-xl font-bold text-primary">
-            Devfolio&trade;
+            Devfolio™
           </Link>
 
           {/* Desktop Menu */}
@@ -42,108 +54,101 @@ export default function Navbar() {
               const isActive =
                 pathName === item.href ||
                 (pathName.startsWith(item.href) && item.href !== "/");
+              
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative hover:text-primary transition-colors font-bold mr-4 ${
-                    isActive ? "text-primary" : "text-white"
-                  } 
-                  after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-1/3 after:bg-orange-400 
-                  after:transition-all after:duration-300 
-                  ${isActive ? "after:opacity-100" : "after:opacity-0 hover:after:opacity-100"}`}
-                  
+                  className={`transition-colors duration-200 ${
+                    isActive
+                      ? "text-primary font-medium"
+                      : "text-gray-700 dark:text-gray-300 hover:text-primary"
+                  }`}
                 >
                   {item.label}
                 </Link>
               );
             })}
-            <motion.button
+
+            {/* Theme Toggle */}
+            <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+              aria-label="Toggle theme"
             >
               {theme === "dark" ? (
                 <SunIcon className="h-5 w-5" />
               ) : (
                 <MoonIcon className="h-5 w-5" />
               )}
-            </motion.button>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            onClick={toggleMobileMenu}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            {isMobileMenuOpen ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
-          </motion.button>
+          <div className="md:hidden">
+            <button
+              onClick={toggleMobileMenu}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden"
-            >
-              <div className="py-4 space-y-4">
-                {menuItems.map((item, index) => (
-                  <motion.div
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-700">
+            <div className="py-4 space-y-2">
+              {menuItems.map((item) => {
+                const isActive =
+                  pathName === item.href ||
+                  (pathName.startsWith(item.href) && item.href !== "/");
+                
+                return (
+                  <Link
                     key={item.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    href={item.href}
+                    onClick={closeMobileMenu}
+                    className={`block px-4 py-2 rounded-lg transition-colors duration-200 ${
+                      isActive
+                        ? "text-primary bg-primary/10 font-medium"
+                        : "text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800"
+                    }`}
                   >
-                    <Link
-                      href={item.href}
-                      className="block py-2 hover:text-primary transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: menuItems.length * 0.1 }}
-                >
-                  <button
-                    onClick={() => {
-                      toggleTheme();
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="flex items-center py-2 hover:text-primary transition-colors"
-                  >
-                    {theme === "dark" ? (
-                      <>
-                        <SunIcon className="h-5 w-5 mr-2" />
-                        Light Mode
-                      </>
-                    ) : (
-                      <>
-                        <MoonIcon className="h-5 w-5 mr-2" />
-                        Dark Mode
-                      </>
-                    )}
-                  </button>
-                </motion.div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                    {item.label}
+                  </Link>
+                );
+              })}
+              
+              <button
+                onClick={handleThemeToggle}
+                className="flex items-center w-full px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
+              >
+                {theme === "dark" ? (
+                  <>
+                    <SunIcon className="h-5 w-5 mr-2" />
+                    Light Mode
+                  </>
+                ) : (
+                  <>
+                    <MoonIcon className="h-5 w-5 mr-2" />
+                    Dark Mode
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
-}
+});
+
+Navbar.displayName = 'Navbar';
+
+export default Navbar;
