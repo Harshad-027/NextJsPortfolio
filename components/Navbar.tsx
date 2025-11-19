@@ -59,13 +59,14 @@ const Navbar = memo(() => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`transition-colors duration-200 ${
+                  className={`relative transition-colors duration-200 ${
                     isActive
                       ? "text-primary font-medium"
                       : "text-gray-700 dark:text-gray-300 hover:text-primary"
-                  }`}
+                  } group`}
                 >
                   {item.label}
+                  <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-cyan-600 dark:bg-cyan-400 transition-all duration-300 ease-out group-hover:w-full"></span>
                 </Link>
               );
             })}

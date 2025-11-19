@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
   webpack: (config, { dev, isServer }) => {
     // Optimize bundle size
     if (!dev && !isServer) {
-      config.optimization.splitChunks = {
+      config.optimization.splitChunks = { 
         chunks: 'all',
         cacheGroups: {
           framework: {
@@ -46,6 +46,18 @@ const nextConfig: NextConfig = {
       };
     }
     return config;
+  },
+  turbopack: {
+    resolveAlias: {
+      underscore: 'lodash',
+    },
+    resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.json'],
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
   },
 };
 

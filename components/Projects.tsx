@@ -83,7 +83,7 @@ const Projects = memo(() => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Here are some of the projects I've worked on recently.
+            Here are some of the projects I&apos;ve worked on recently.
           </p>
         </div>
         

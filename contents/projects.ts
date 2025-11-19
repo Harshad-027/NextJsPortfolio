@@ -15,7 +15,7 @@ export const projects: Project[] = [
         description: 'A robust Auth Backend with industry level user management.',
         technologies: ['Node.js','Javascript', 'JWT', 'multer'] ,
         githubLink: 'https://github.com/Harshad-027/JWT-Shield',
-        demoLink: 'https://github.com/Harshad-027/JWT-Shield',
+        demoLink: 'Theres No active link as this is a Backend',
         image: '/projects/JWTShield.png',
       },
     {
@@ -23,7 +23,7 @@ export const projects: Project[] = [
         description: 'Simple NextJS app to understand the NextJs framework.',
         technologies: ['Next.js','Toast Notifications'] ,
         githubLink: 'https://github.com/Harshad-027/nexttodo',
-        demoLink: '',
+        demoLink: 'https://nexttodo-ruddy.vercel.app/',
         image: '/projects/NextTodo.png',
       },
   ];

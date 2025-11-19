@@ -18,18 +18,14 @@ const HoverBorderGradient = dynamic(() => import("./ui/hoverBoarderGradient").th
 });
 
 const Hero = memo(() => {
-  // Memoize static data
   const socialLinks = useMemo(() => [
-    { Icon: FaGithub, href: "https://github.com", label: "GitHub" },
-    { Icon: FaLinkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { Icon: FaTwitter, href: "https://twitter.com", label: "Twitter" }
+    { Icon: FaGithub, href: "https://github.com/Harshad-027", label: "GitHub" },
+    { Icon: FaLinkedin, href: "https://linkedin.com/harshadnikam27", label: "LinkedIn" },
+    { Icon: FaTwitter, href: "https://x.com/HarshadNikam27", label: "Twitter" }
   ], []);
-
-
   const handleDownloadResume = useCallback(() => {
     window.open('/resume.pdf', '_blank');
   }, []);
-
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -47,7 +43,7 @@ const Hero = memo(() => {
         </div>
         <div className="space-y-4 animate-fadeIn">
           <h1 className="text-4xl sm:text-6xl font-bold">
-            Hi, I'm <span className="text-primary">Harshad</span>
+           {` Hi, I am `} <span className="text-primary">Harshad</span>
           </h1>
           <div className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300">
             <TextGenerateEffect
