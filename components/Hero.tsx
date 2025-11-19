@@ -31,7 +31,7 @@ const Hero = memo(() => {
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden">
           <Image
-            src="/profile.png"
+            src="profile.png"
             alt="Profile"
             width={128}
             height={128}
